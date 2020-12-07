@@ -68,7 +68,7 @@
     "pug-lint": "^2.5.0",
     "require-dir": "^1.0.0",
     "rollup": "^1.31.0",
-    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-uglify-es": "^0.0.1",
