@@ -81,7 +81,7 @@
     "stylelint-order": "^4.0.0",
     "stylelint-scss": "^3.3.0",
     "stylelint-suitcss": "^3.0.0",
-    "yargs": "^15.1.0"
+    "yargs": "^16.2.0"
   },
   "dependencies": {
     "normalize-scss": "^7.0.1"
