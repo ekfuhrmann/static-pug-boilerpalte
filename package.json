@@ -62,7 +62,7 @@
     "gulp-svgstore": "^7.0.1",
     "imagemin-mozjpeg": "^8.0.0",
     "include-media": "^1.4.9",
-    "node-sass": "^4.13.1",
+    "node-sass": "^5.0.0",
     "postcss-easing-gradients": "^3.0.1",
     "prettier-stylelint": "^0.4.2",
     "pug-lint": "^2.5.0",
