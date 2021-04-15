@@ -11,15 +11,16 @@ $ git clone --bare https://github.com/ekfuhrmann/project-boilerplate.git
 # Make a bare clone of this repository
 ```
 
+Create a new repo that you want to mirror into and then run the following:
 ```command
-$ cd project-boilerplate
-$ git push --mirror https://github.com/exampleuser/<new-repository>.git
+$ cd project-boilerplate.git
+$ git push --mirror https://github.com/<user name>/<new repo>.git
 # Mirror-push to the new repository
 ```
 
 ```command
 $ cd ..
-$ rm -Recurse -Force repo_setup
+$ rm -Recurse -Force project-boilerplate.git
 # Remove our temporary local repository
 ```
 
