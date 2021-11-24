@@ -13,23 +13,56 @@
 // PARTIALS
 // @import 'partials/example';
 
-// BOX-SIZING - FONT-SIZING PRESETS
-html {
-  box-sizing: border-box;
-}
-
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
   font-size: 1rem; // = 16px default font size
-  margin: 0;
-  min-width: 320px;
-  overflow-x: hidden;
-  width: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
 }
 
 // Hide inline spritesheet
@@ -39,11 +72,4 @@ body {
 
 .wrapper {
   @include wrapper;
-}
-
-.test {
-  display: block;
-  fill: red;
-  height: 100%;
-  width: 100%;
 }
