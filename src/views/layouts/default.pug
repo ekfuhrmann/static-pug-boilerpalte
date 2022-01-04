@@ -1,13 +1,13 @@
-include ../layouts/general/_head
+include ../mixins/bundle
 
-//- If extra includes content is necessary per page
+//- If specific includes are necessary on a per page basis
 block includes
 
 //- Define page variables here such as 'title' and 'description'
 block vars
 
 doctype html
-html(dir='ltr' lang='en')
+html(dir='ltr', lang='en')
   head
     +headContent(title, description)
     block head

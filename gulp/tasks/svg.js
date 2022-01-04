@@ -19,7 +19,7 @@ export const svgInline = () => {
       })
     )
     .pipe(svgstore({ inlineSvg: true }))
-    .pipe(dest('src/views/layouts/includes'));
+    .pipe(dest('src/views/includes'));
 };
 
 export const svgStandalone = () => {

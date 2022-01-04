@@ -1,12 +1,13 @@
 {
-  "plugins": ["stylelint-scss", "stylelint-order"],
+  "plugins": ["stylelint-prettier", "stylelint-scss", "stylelint-order"],
   "ignoreFiles": ["dist/**"],
-  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
   "rules": {
     "order/order": ["custom-properties", "declarations"],
     "order/properties-alphabetical-order": true,
     "at-rule-no-unknown": null,
     "property-no-unknown": [true, { "ignoreProperties": ["font-range"] }],
+    "scss/at-rule-no-unknown": true,
     "declaration-empty-line-before": "never",
     "no-descending-specificity": null
   }

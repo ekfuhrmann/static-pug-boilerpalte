@@ -1,6 +1,8 @@
+@use 'helpers/variables';
+
 @mixin wrapper {
   margin: 0 auto;
-  max-width: $site-width;
+  max-width: variables.$site-width;
   padding: 0 var(--spacing);
   width: 100%;
 }

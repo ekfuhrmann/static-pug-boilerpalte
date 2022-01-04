@@ -1,0 +1,14 @@
+@use '../globals/globals' as *;
+@use '../helpers/typography';
+
+.tag {
+  color: lime;
+
+  @media ('>=md') {
+    color: red;
+  }
+
+  &__label {
+    @include typography.h1;
+  }
+}

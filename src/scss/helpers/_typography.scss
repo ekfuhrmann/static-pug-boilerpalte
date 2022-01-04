@@ -1,3 +1,5 @@
+@use 'rfs/scss'; //TODO: remove this for a clamp responsive text solution...
+
 // General Text Mixin
 @mixin font(
   $name: false,
@@ -25,7 +27,7 @@
 
   // Font Size (Fluid type < 1200px)
   @if $size {
-    @include font-size($size);
+    @include scss.font-size($size);
   }
 
   // Font Color
@@ -59,10 +61,7 @@
   }
 }
 
-/**  ===================
-   TEXT STYLES
-===================  **/
-@mixin font-h1($color: false, $weight: 700, $margin: false) {
+@mixin h1($color: false, $weight: 700, $margin: false) {
   @include font(
     $name: 'arial',
     $size: 5rem,
@@ -76,7 +75,7 @@
   }
 }
 
-@mixin font-h2($color: false, $weight: 400, $margin: false) {
+@mixin h2($color: false, $weight: 400, $margin: false) {
   @include font(
     $name: 'arial',
     $size: 3.6rem,
@@ -94,7 +93,7 @@
   }
 }
 
-@mixin font-h3($color: false, $weight: 800, $margin: false) {
+@mixin h3($color: false, $weight: 800, $margin: false) {
   @include font(
     $name: 'arial',
     $size: 2.4rem,
@@ -107,12 +106,7 @@
   }
 }
 
-@mixin font-h4(
-  $color: false,
-  $weight: 700,
-  $margin: false,
-  $letter-spacing: 0.2em
-) {
+@mixin h4($color: false, $weight: 700, $margin: false, $letter-spacing: 0.2em) {
   @include font(
     $name: 'arial',
     $size: 1.6rem,
@@ -127,7 +121,7 @@
   }
 }
 
-@mixin font-h5($color: false, $weight: 400, $margin: false) {
+@mixin h5($color: false, $weight: 400, $margin: false) {
   @include font(
     $name: 'arial',
     $size: 1.4rem,
@@ -144,7 +138,7 @@
   }
 }
 
-@mixin font-body($color: false, $weight: 400, $margin: false) {
+@mixin body($color: false, $weight: 400, $margin: false) {
   @include font(
     $name: 'times new roman',
     $size: 1.8rem,

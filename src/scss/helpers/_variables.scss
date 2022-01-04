@@ -1,8 +1,16 @@
 // Colors
-$white: #fff;
-$gallery: #eee;
-$slate-gray: #6f7f8f;
-$shark: #262628;
+$color-scale-50: #3f3562;
+$color-scale-100: #444379;
+$color-scale-200: #515e91;
+$color-scale-300: #607da8;
+$color-scale-400: #6fa0be;
+$color-scale-500: #85bfca;
+$color-scale-600: #9bd5d1;
+$color-scale-700: #b2e0d2;
+$color-scale-800: #c9ead9;
+$color-scale-900: #e1f4e6;
+
+$cloud-burst: #1f3244;
 
 // Breakpoints
 $breakpoints: (
@@ -17,16 +25,3 @@ $breakpoints: (
 $site-width: 1440px;
 $grid-gap: 1.6rem;
 $spacing: $grid-gap * 6.5;
-
-// CSS Variables
-:root {
-  --spacing: #{$spacing / 4};
-
-  @include media('>=sm') {
-    --spacing: #{$spacing / 2};
-  }
-
-  @include media('>=lg') {
-    --spacing: #{$spacing};
-  }
-}

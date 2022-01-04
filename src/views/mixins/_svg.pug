@@ -1,7 +1,3 @@
-//- Mixin Blocks
-//- include mixins/<file-name>
-
-//- General Mixins
 mixin inline-svg(svgName, className = false)
   svg(class= className ? `${className} ${svgName}` : svgName)
     use(xlink:href=`#${svgName}`)
