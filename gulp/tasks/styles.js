@@ -24,7 +24,7 @@ const styles = () => {
       postcss([
         postcssNested(),
         postcssIncludeMedia({
-          ruleName: 'media',
+          ruleName: 'mq',
           breakpoints: {
             xs: '320px',
             sm: '550px',

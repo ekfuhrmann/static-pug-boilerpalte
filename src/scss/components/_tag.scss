@@ -1,10 +1,9 @@
-@use '../globals/globals' as *;
-@use '../helpers/typography';
+@use '../base/typography';
 
 .tag {
   color: lime;
 
-  @media ('>=md') {
+  @mq ('>=md') {
     color: red;
   }
 

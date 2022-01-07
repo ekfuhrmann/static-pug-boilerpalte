@@ -1,0 +1,115 @@
+@use 'abstracts/variables';
+
+// TODO: remove this for a clamp responsive text solution...
+@use 'rfs/scss';
+
+@mixin wrapper {
+  width: 100%;
+  max-width: variables.$site-width;
+  padding: 0 var(--spacing);
+  margin: 0 auto;
+}
+
+@mixin position(
+  $position: relative,
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null
+) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin hide-text {
+  color: transparent;
+  font-size: 0;
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+@mixin responsive-type($type-min, $type-max, $type-target) {
+  @if not $type-target {
+    $type-target: 3vw;
+  }
+
+  font-size: clamp($type-min, calc(1rem + $type-target), $type-max);
+
+  // TODO:https://piccalil.li/tutorial/fluid-typography-with-css-clamp/
+}
+
+// General Type Mixin
+@mixin type(
+  $name: false,
+  $size: false,
+  $responsive-size: false,
+  $color: false,
+  $weight: false,
+  $style: false,
+  $transform: false,
+  $line-height: false,
+  $letter-spacing: false
+) {
+  // NOTE: Update font families inside of the `../abstracts/_variables` file
+
+  // set font family
+  @if $name {
+    @if $name == 'primary' {
+      font-family: variables.$primary-font;
+    } @else if $name == 'secondary' {
+      font-family: variables.$secondary-font;
+    } @else if $name {
+      font-family: $name;
+    } @else {
+      font-family: variables.$primary-font;
+    }
+  }
+
+  // set font size
+  @if $size {
+    @debug nth($size, 1);
+
+    @if length($size) > 0 {
+      @if length($size) > 2 {
+        @include responsive-type(nth($size, 1), nth($size, 2), nth($size, 3));
+      } @else {
+        @include responsive-type(nth($size, 1), nth($size, 2), false);
+      }
+    } @else {
+      font-size: $size;
+    }
+  }
+
+  // set font color
+  @if $color {
+    color: $color;
+  }
+
+  // set font weight
+  @if $weight {
+    font-weight: $weight;
+  }
+
+  // set font style
+  @if $style {
+    font-style: $style;
+  }
+
+  // set text transform
+  @if $transform {
+    text-transform: $transform;
+  }
+
+  // set line height
+  @if $line-height {
+    line-height: $line-height;
+  }
+
+  // set letter spacing
+  @if $letter-spacing {
+    letter-spacing: $letter-spacing;
+  }
+}

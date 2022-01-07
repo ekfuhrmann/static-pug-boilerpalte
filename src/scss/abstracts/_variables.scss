@@ -4,24 +4,18 @@ $color-scale-100: #444379;
 $color-scale-200: #515e91;
 $color-scale-300: #607da8;
 $color-scale-400: #6fa0be;
-$color-scale-500: #85bfca;
+$color-scale-500: #86bfca;
 $color-scale-600: #9bd5d1;
 $color-scale-700: #b2e0d2;
 $color-scale-800: #c9ead9;
 $color-scale-900: #e1f4e6;
-
 $cloud-burst: #1f3244;
 
-// Breakpoints
-$breakpoints: (
-  xs: 320px,
-  sm: 550px,
-  md: 768px,
-  lg: 1024px,
-  xl: 1440px,
-);
+// Font Families
+$primary-font: ('arial', sans-serif);
+$secondary-font: ('Times New Roman', serif);
 
 // Settings
 $site-width: 1440px;
 $grid-gap: 1.6rem;
-$spacing: $grid-gap * 6.5;
+$spacing: $grid-gap * 6;

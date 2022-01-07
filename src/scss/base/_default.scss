@@ -1,39 +1,39 @@
-@use '../helpers/variables';
-@use '../helpers/utilities';
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
 
 :root {
-  --spacing: #{variables.$spacing * 0.25};
-
-  @media ('>=sm') {
-    --spacing: #{variables.$spacing * 0.5};
-  }
-
-  @media ('>=lg') {
-    --spacing: #{variables.$spacing};
-  }
+  --spacing: clamp(
+    #{variables.$spacing * 0.25},
+    calc(1rem + 3vw),
+    #{variables.$spacing}
+  );
 }
 
+html {
+  box-sizing: border-box; // default to border-box
+  font-size: 62.5%; // convert 1rem = 10px
+  -webkit-font-smoothing: antialiased;
+}
+
+// box-sizing inherited throughout
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 
+// no unexpected spacing
 * {
+  padding: 0;
   margin: 0;
 }
 
-html,
+// set default font size
 body {
-  height: 100%;
+  font-size: 1.6rem; // 1.6rem = 16px
 }
 
-body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  font-size: 1rem; // = 16px default font size
-}
-
+// prevents annoying line-height gaps
 img,
 picture,
 video,
@@ -43,33 +43,26 @@ svg {
   max-width: 100%;
 }
 
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
+// maintains good responsive constraints for typography
 p,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+li,
+blockquote {
+  hyphens: auto;
   overflow-wrap: break-word;
 }
 
-#root,
-#__next {
-  isolation: isolate;
-}
-
-// Hide inline spritesheet
+// hides inline spritesheet generated for SVGs
 .svg__spritesheet {
   display: none;
 }
 
+// general site-wrapper
 .wrapper {
-  @include utilities.wrapper;
+  @include mixins.wrapper;
 }

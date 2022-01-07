@@ -1,14 +1,21 @@
 {
-  "plugins": ["stylelint-prettier", "stylelint-scss", "stylelint-order"],
-  "ignoreFiles": ["dist/**"],
-  "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
+  "plugins": ["stylelint-order", "stylelint-scss"],
+  "extends": [
+    "stylelint-config-prettier",
+    "stylelint-config-standard-scss",
+    "stylelint-config-idiomatic-order"
+  ],
   "rules": {
     "order/order": ["custom-properties", "declarations"],
-    "order/properties-alphabetical-order": true,
-    "at-rule-no-unknown": null,
-    "property-no-unknown": [true, { "ignoreProperties": ["font-range"] }],
-    "scss/at-rule-no-unknown": true,
-    "declaration-empty-line-before": "never",
-    "no-descending-specificity": null
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": "mq"
+      }
+    ],
+    "string-quotes": "single",
+    "selector-id-pattern": null,
+    "selector-class-pattern": null,
+    "declaration-colon-newline-after": null
   }
 }
