@@ -1,21 +1,13 @@
 // Colors
-$color-scale-50: #3f3562;
-$color-scale-100: #444379;
-$color-scale-200: #515e91;
-$color-scale-300: #607da8;
-$color-scale-400: #6fa0be;
-$color-scale-500: #86bfca;
-$color-scale-600: #9bd5d1;
-$color-scale-700: #b2e0d2;
-$color-scale-800: #c9ead9;
-$color-scale-900: #e1f4e6;
-$cloud-burst: #1f3244;
 
-// Font Families
-$primary-font: ('arial', sans-serif);
-$secondary-font: ('Times New Roman', serif);
+$martinique: #333652;
+$sunglow: #fad02c;
+$athens-gray: #e9eaec;
+$nepal: #90adc6;
 
 // Settings
 $site-width: 1440px;
-$grid-gap: 1.6rem;
+$grid-gap: 16px;
 $spacing: $grid-gap * 6;
+$border-radius: 2px;
+$nav-height: 65px;

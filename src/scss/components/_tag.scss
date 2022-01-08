@@ -1,13 +1,23 @@
 @use '../base/typography';
+@use '../abstracts/variables';
 
 .tag {
-  color: lime;
+  width: 80%;
+  max-width: 800px;
 
-  @mq ('>=md') {
-    color: red;
-  }
+  // flex: 1;
+  padding: var(--gap);
+  background-color: var(--tag-background);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 0 3px var(--background), 0 0 0 5px var(--tag-background);
 
   &__label {
-    @include typography.h1;
+    @include typography.h2($color: var(--tag-text), $line-height: 1);
+
+    &::before {
+      margin-right: calc(var(--gap) * 0.5);
+      content: '#';
+      font-weight: 800;
+    }
   }
 }

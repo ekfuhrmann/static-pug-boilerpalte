@@ -70,7 +70,6 @@
     "yargs": "^16.2.0"
   },
   "dependencies": {
-    "normalize-scss": "^7.0.1",
-    "rfs": "^9.0.6"
+    "normalize-scss": "^7.0.1"
   }
 }

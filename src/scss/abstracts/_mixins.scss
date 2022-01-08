@@ -1,7 +1,5 @@
+@use 'sass:math';
 @use 'abstracts/variables';
-
-// TODO: remove this for a clamp responsive text solution...
-@use 'rfs/scss';
 
 @mixin wrapper {
   width: 100%;
@@ -10,8 +8,16 @@
   margin: 0 auto;
 }
 
+@mixin is-flex($align: center, $justify: center, $direction: row, $wrap: wrap) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  align-items: $align;
+  justify-content: $justify;
+}
+
 @mixin position(
-  $position: relative,
+  $position: absolute,
   $top: null,
   $right: null,
   $bottom: null,
@@ -31,14 +37,35 @@
   white-space: nowrap;
 }
 
-@mixin responsive-type($type-min, $type-max, $type-target) {
-  @if not $type-target {
-    $type-target: 3vw;
+@mixin responsive-type($type-min: 1.6rem, $type-max: 2rem) {
+  // defines the breakpoints for min and max type sizes
+  --type-breakpoint-min: 400;
+  --type-breakpoint-max: 1200;
+
+  // checks min value, removes unit, and converts px to rem
+  @if unit($type-min) == 'px' {
+    --type-min: #{math.div($type-min, 1px) * 0.1};
+  } @else if unit($type-min) == 'rem' {
+    --type-min: #{math.div($type-min, 1rem)};
   }
 
-  font-size: clamp($type-min, calc(1rem + $type-target), $type-max);
+  // checks max value, removes unit, and converts px to rem
+  @if unit($type-max) == 'px' {
+    --type-max: #{math.div($type-max, 1px) * 0.1};
+  } @else if unit($type-max) == 'rem' {
+    --type-max: #{math.div($type-max, 1rem)};
+  }
 
-  // TODO:https://piccalil.li/tutorial/fluid-typography-with-css-clamp/
+  // calculate the linear scaling
+  --fluid-size: var(--type-min) * 1rem + (var(--type-max) - var(--type-min)) *
+    ((100vw - 42rem) / (120 - 42));
+
+  // use clamp and put it all together
+  font-size: clamp(
+    var(--type-min) * 1rem,
+    var(--fluid-size),
+    var(--type-max) * 1rem
+  );
 }
 
 // General Type Mixin
@@ -58,27 +85,43 @@
   // set font family
   @if $name {
     @if $name == 'primary' {
-      font-family: variables.$primary-font;
+      font-family: 'open sans', sans-serif;
     } @else if $name == 'secondary' {
-      font-family: variables.$secondary-font;
+      font-family: 'playfair display', serif;
     } @else if $name {
       font-family: $name;
     } @else {
-      font-family: variables.$primary-font;
+      font-family: 'open sans', sans-serif;
     }
   }
 
   // set font size
   @if $size {
-    @debug nth($size, 1);
-
-    @if length($size) > 0 {
-      @if length($size) > 2 {
-        @include responsive-type(nth($size, 1), nth($size, 2), nth($size, 3));
+    /**
+     * You can set a responsive size by putting a min and
+     * max value (px/rem) inside of a map.
+     *
+     * For Example:
+     *    $size: (1.6rem, 3.2rem)
+     *        - or -
+     *    $size: (166px, 32px)
+    **/
+    @if type-of($size) == 'list' and length($size) == 2 {
+      // check that units are valid (px/rem)
+      @if (unit(nth($size, 1)) == 'px' or unit(nth($size, 1)) == 'rem') and
+        (unit(nth($size, 2)) == 'px' or unit(nth($size, 2)) == 'rem')
+      {
+        // if valid, use responsive-type mixin
+        @include responsive-type(nth($size, 1), nth($size, 2));
       } @else {
-        @include responsive-type(nth($size, 1), nth($size, 2), false);
+        // if missing units, log error
+        @error 'Property $size: (#{$size}) may only take in a static value or a responsive **min** and **max** value using the `rem` or `px` unit.';
       }
+    } @else if type-of($size) == 'list' {
+      // if incorrect map, log error
+      @error 'Property $size: (#{$size}) may only take in a static value or a responsive **min** and **max** value using the `rem` or `px` unit.';
     } @else {
+      // otherwise use static value
       font-size: $size;
     }
   }

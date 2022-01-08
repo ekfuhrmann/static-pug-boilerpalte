@@ -3,6 +3,8 @@ import sourcemaps from 'gulp-sourcemaps';
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import postcss from 'gulp-postcss';
+import notify from 'gulp-notify';
+import plumber from 'gulp-plumber';
 import rename from 'gulp-rename';
 import gulpif from 'gulp-if';
 import cleanCss from 'gulp-clean-css';
@@ -18,6 +20,14 @@ const PRODUCTION = yargs.argv.prod;
 
 const styles = () => {
   return src('src/scss/main.scss')
+    .pipe(
+      plumber({
+        errorHandler: notify.onError({
+          title: 'Gulp Styles Error',
+          message: 'Error: <%= error.message %>',
+        }),
+      })
+    )
     .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
     .pipe(sass({ includePaths: ['node_modules/'] }).on('error', sass.logError))
     .pipe(
