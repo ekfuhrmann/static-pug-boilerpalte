@@ -1,0 +1,41 @@
+include ../mixins/_bundle
+include ../includes/_menu
+
+//- If specific includes are necessary on a per page basis
+block includes
+
+//- default vars for page title/description (can be overridden on specific pages)
+- var title = 'Static Pug Project Setup';
+- var description = 'This site is a boilerplate for setting up a static pug.js website. View the README file at https://github.com/ekfuhrmann/static-pug-boilerpalte for more information.';
+
+//- Define page variables here such as 'title' and 'description'
+block vars
+
+doctype html
+html(dir='ltr', lang='en', data-theme='light')
+  head
+    block head
+    +head-content(title, description)
+
+  body
+    //- spritesheet for inline svg's
+    .svg__spritesheet
+      include ../includes/inline.svg
+
+    //- menu
+    +menu(page)
+
+    //- tag
+    +tag(`${page} Page`)
+    button.button Toggle
+
+    block content
+
+    //- Footer
+    include ../includes/_footer
+
+    //- Scripts
+    script(src='assets/js/scripts.js')
+
+    //- If extra scripts are needed
+    block scripts

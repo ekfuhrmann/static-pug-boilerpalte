@@ -1,7 +1,5 @@
 import { src, dest } from 'gulp';
 import webpack from 'webpack-stream';
-import notify from 'gulp-notify';
-import plumber from 'gulp-plumber';
 import dotEnv from 'dotenv-webpack';
 import yargs from 'yargs';
 
@@ -10,14 +8,6 @@ const PRODUCTION = yargs.argv.prod;
 
 const scripts = () => {
   return src('src/js/main.js')
-    .pipe(
-      plumber({
-        errorHandler: notify.onError({
-          title: 'Gulp Scripts Error',
-          message: 'Error: <%= error.message %>',
-        }),
-      })
-    )
     .pipe(
       webpack({
         module: {

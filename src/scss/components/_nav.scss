@@ -1,3 +1,20 @@
+@use '../base/typography';
+@use '../abstracts/colors';
+
+:root {
+  &[data-theme='dark'] {
+    --nav-background: #{colors.$sunglow};
+    --nav-text: #{colors.$martinique};
+  }
+
+  &[data-theme='light'] {
+    --nav-background: #{colors.$martinique};
+    --nav-text: #{colors.$athens-gray};
+  }
+}
+
 .nav {
-  height: var(--nav-height);
+  height: var(--site-nav-height);
+
+  @include typography.h1($color: red, $line-height: 1);
 }

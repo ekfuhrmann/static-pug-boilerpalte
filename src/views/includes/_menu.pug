@@ -1,0 +1,21 @@
+mixin menu-item(content)
+  if content.active
+    - var activeState = 'active';
+
+  li.menu__nav-item(data-state=activeState || false)
+    a.menu__nav-link(href=content.url)= content.text
+
+-
+  var pages = [
+    {name: 'Home', src: '/'},
+    {name: 'About', src: '/about'},
+    {name: 'Contact', src: '/contact'}
+  ]
+
+mixin menu(activePage)
+  .menu
+    .menu__logo
+    nav.menu__nav(aria-label='main menu', role='navigation')
+      ul.menu__nav-list
+        each page in pages
+          +menu-item({ text: page.name, url: page.src, active: activePage && activePage.toLowerCase() == page.name.toLowerCase() })

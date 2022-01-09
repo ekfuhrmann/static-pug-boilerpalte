@@ -1,39 +1,16 @@
-@use '../abstracts/variables';
 @use '../abstracts/mixins';
 
-// TODO: https://codyhouse.co/blog/post/css-custom-properties-vs-sass-variables
-
-// https://codyhouse.co/blog/post/how-to-combine-sass-color-functions-and-css-variables
-
-// Consider using a space unit
-
 :root {
-  --nav-height: #{variables.$nav-height}
-  --gap: #{variables.$grid-gap};
-  --spacing: clamp(
-    #{variables.$spacing * 0.25},
+  --site-max-width: 1440px;
+  --site-nav-height: 65px;
+  --site-theme-transition: 250ms ease-out;
+  --grid-gap: 0.5em; // might swap back to 8px
+  --grid-spacing: clamp(
+    calc(var(--grid-gap) * 3),
     calc(1rem + 3vw),
-    #{variables.$spacing}
+    calc(var(--grid-gap) * 12)
   );
-  --border-radius: #{variables.$border-radius};
-
-  color-scheme: light dark;
-
-  // dark theme
-  @media (prefers-color-scheme: dark) {
-    --background: #{variables.$martinique};
-    --primary-text: #{variables.$athens-gray};
-    --tag-background: #{variables.$sunglow};
-    --tag-text: #{variables.$martinique};
-  }
-
-  // light theme
-  @media (prefers-color-scheme: dark) {
-    --background: #{variables.$sunglow};
-    --primary-text: #{variables.$martinique};
-    --tag-background: #{variables.$martinique};
-    --tag-text: $athens-gray;
-  }
+  --border-radius: 2px;
 }
 
 html {
@@ -59,13 +36,14 @@ html {
 
 // set default font size
 body {
-  @include mixins.is-flex(center, center);
+  @include mixins.is-flex(center, center, column);
   @include mixins.wrapper;
-
   min-height: 100vh;
   background-color: var(--background);
   color: var(--text-primary);
   font-size: 1.6rem; // 1.6rem = 16px
+  gap: var(--grid-spacing);
+  transition: background-color var(--site-theme-transition);
 }
 
 // prevents annoying line-height gaps

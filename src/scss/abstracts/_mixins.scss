@@ -1,10 +1,9 @@
 @use 'sass:math';
-@use 'abstracts/variables';
 
 @mixin wrapper {
   width: 100%;
-  max-width: variables.$site-width;
-  padding: 0 var(--spacing);
+  max-width: var(--site-max-width);
+  padding: 0 var(--grid-spacing);
   margin: 0 auto;
 }
 

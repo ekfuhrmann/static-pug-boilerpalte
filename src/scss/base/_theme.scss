@@ -1,0 +1,15 @@
+@use '../abstracts/colors';
+
+:root {
+  color-scheme: light;
+
+  &[data-theme='dark'] {
+    --background: #{colors.$martinique};
+    --primary-text: #{colors.$athens-gray};
+  }
+
+  &[data-theme='light'] {
+    --background: #{colors.$sunglow};
+    --primary-text: #{colors.$martinique};
+  }
+}

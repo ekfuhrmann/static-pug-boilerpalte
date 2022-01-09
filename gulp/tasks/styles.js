@@ -3,14 +3,13 @@ import sourcemaps from 'gulp-sourcemaps';
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import postcss from 'gulp-postcss';
-import notify from 'gulp-notify';
-import plumber from 'gulp-plumber';
 import rename from 'gulp-rename';
 import gulpif from 'gulp-if';
 import cleanCss from 'gulp-clean-css';
 import autoprefixer from 'autoprefixer';
 import postcssIncludeMedia from 'postcss-include-media';
 import postcssNested from 'postcss-nested';
+import cssnano from 'cssnano';
 import yargs from 'yargs';
 
 const sass = gulpSass(dartSass);
@@ -20,14 +19,6 @@ const PRODUCTION = yargs.argv.prod;
 
 const styles = () => {
   return src('src/scss/main.scss')
-    .pipe(
-      plumber({
-        errorHandler: notify.onError({
-          title: 'Gulp Styles Error',
-          message: 'Error: <%= error.message %>',
-        }),
-      })
-    )
     .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
     .pipe(sass({ includePaths: ['node_modules/'] }).on('error', sass.logError))
     .pipe(
@@ -46,7 +37,7 @@ const styles = () => {
         autoprefixer(),
       ])
     )
-    .pipe(gulpif(PRODUCTION, cleanCss({ compatibility: '*' })))
+    .pipe(gulpif(PRODUCTION, cleanCss({ level: 2 })))
     .pipe(gulpif(!PRODUCTION, sourcemaps.write()))
     .pipe(rename({ basename: 'styles' }))
     .pipe(dest('dist/assets/css'));
