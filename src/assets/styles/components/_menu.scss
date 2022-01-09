@@ -1,0 +1,39 @@
+@use '../base/typography';
+@use '../abstracts/colors';
+@use '../abstracts/mixins';
+
+:root {
+  &[data-theme='dark'] {
+    --nav-text: #{colors.$sunglow};
+  }
+
+  &[data-theme='light'] {
+    --nav-text: #{colors.$martinique};
+  }
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: var(--site-menu-height);
+  @include mixins.is-flex(center, space-between, row, nowrap);
+  @include typography.h4($line-height: 1);
+  @include mixins.wrapper;
+
+  &__nav-list {
+    list-style: none;
+    @include mixins.is-flex(center, center, row, nowrap);
+  }
+
+  &__nav-link {
+    padding: var(--grid-gap);
+    color: var(--nav-text);
+    text-decoration: none;
+  }
+
+  &__nav-submenu {
+    display: none;
+  }
+}

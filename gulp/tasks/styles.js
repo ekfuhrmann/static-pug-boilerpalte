@@ -18,7 +18,7 @@ const sass = gulpSass(dartSass);
 const PRODUCTION = yargs.argv.prod;
 
 const styles = () => {
-  return src('src/scss/main.scss')
+  return src('src/assets/styles/main.scss')
     .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
     .pipe(sass({ includePaths: ['node_modules/'] }).on('error', sass.logError))
     .pipe(

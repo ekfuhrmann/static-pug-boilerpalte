@@ -7,7 +7,7 @@ import yargs from 'yargs';
 const PRODUCTION = yargs.argv.prod;
 
 const scripts = () => {
-  return src('src/js/main.js')
+  return src('src/assets/scripts/main.js')
     .pipe(
       webpack({
         module: {

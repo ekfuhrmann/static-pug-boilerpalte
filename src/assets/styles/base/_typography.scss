@@ -60,6 +60,16 @@
   );
 }
 
+@mixin h4($color: false, $weight: 400, $line-height: false) {
+  @include type(
+    $name: primary,
+    $size: 2rem,
+    $weight: $weight,
+    $color: $color,
+    $line-height: $line-height
+  );
+}
+
 @mixin body($color: false, $weight: 400, $line-height: false) {
   @include type(
     $name: primary,

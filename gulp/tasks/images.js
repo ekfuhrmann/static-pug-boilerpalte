@@ -6,12 +6,13 @@ import imagemin from 'gulp-imagemin';
 import changed from 'gulp-changed';
 
 const images = () => {
-  return src('src/images/**/*.{gif,jpg,jpeg,png,svg}')
+  return src('src/assets/images/**/*.{gif,jpg,jpeg,png,svg}')
     .pipe(
       plumber({
         errorHandler: notify.onError({
           title: 'Gulp Images Error',
           message: 'Error: <%= error.message %>',
+          sound: false,
         }),
       })
     )

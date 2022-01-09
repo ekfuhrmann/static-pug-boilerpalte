@@ -1,0 +1,38 @@
+-
+  var pages = [
+    {name: 'Home', src: '/'},
+    {name: 'About', src: '/about'},
+    {name: 'Contact', src: '/contact'},
+    {name: 'Blog', src: '/blog', subpages: [
+      {name: 'Sample Blog Post', src: '/blog/sample-post'}
+    ]},
+  ];
+
+mixin menu-item(content)
+  if content.active
+    - var activeState = 'active';
+
+  li.menu__nav-item(data-state=activeState || false)
+    a.menu__nav-link(href=content.subpages ? '#' : content.url)= content.name
+      if content.subpages
+        ul.menu__nav-submenu(aria-label='submenu')
+          each subpage in content.subpages
+            li.menu__submenu-item
+              a.menu__submenu-link(href=subpage.src)= subpage.name
+
+mixin menu(activePage)
+  .menu
+    .menu__left
+      .menu__logo
+      nav.menu__nav(aria-label='main menu', role='navigation')
+        ul.menu__nav-list
+          each page in pages
+            -
+              var setPage = {
+                name: page.name,
+                url: page.src,
+                active: activePage && activePage.toLowerCase() == page.name.toLowerCase(),
+                subpages: page.subpages
+              }
+
+            +menu-item(setPage)
