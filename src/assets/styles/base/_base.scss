@@ -34,7 +34,6 @@ body {
   color: var(--text-primary);
   font-size: 1.6rem; // 1.6rem = 16px
   gap: var(--grid-spacing);
-  transition: background-color var(--site-theme-transition);
 }
 
 // prevents annoying line-height gaps

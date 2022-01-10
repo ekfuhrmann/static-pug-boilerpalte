@@ -36,3 +36,7 @@ mixin menu(activePage)
                 subpages: page.subpages
               }
             +menu-item(setPage)
+    .menu__box
+      button.menu__theme-toggle
+        +inline-svg('moon', 'menu__theme-toggle-icon --dark')
+        +inline-svg('sun', 'menu__theme-toggle-icon --light')

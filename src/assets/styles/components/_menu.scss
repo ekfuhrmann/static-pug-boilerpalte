@@ -3,7 +3,6 @@
 @use '../abstracts/mixins';
 
 :root {
-  &,
   &[data-theme='light'] {
     --menu-text: #{colors.$martinique};
     --menu-active-text: #{colors.$sunglow};
@@ -117,4 +116,60 @@
 
 .menu__subpage-link {
   @extend %menu-links;
+}
+
+.menu__theme-toggle {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--menu-active-background);
+  cursor: pointer;
+  fill: var(--menu-active-background);
+  outline-offset: 4px;
+  transform-origin: center;
+  transition: fill var(--site-theme-transition),
+    box-shadow var(--site-theme-transition), transform 400ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    transform: rotate(120deg);
+  }
+}
+
+.menu__theme-toggle-icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  transform-origin: center;
+  transition: fill var(--site-theme-transition), transform 400ms ease-in-out,
+    opacity 400ms ease-in-out;
+
+  [data-theme='light'] & {
+    &.--dark {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    &.--light {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  [data-theme='dark'] & {
+    &.--dark {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    &.--light {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
 }

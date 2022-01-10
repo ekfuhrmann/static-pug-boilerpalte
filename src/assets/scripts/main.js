@@ -1,20 +1,7 @@
-// Reserved for scripts
+import toggleTheme from './partials/toggleTheme';
+
 const main = () => {
-  // scripts to run after content loads
-
-  // TODO: store in its own comp
-  const btn = document.querySelector('.button');
-  const root = document.documentElement;
-
-  btn.addEventListener('click', () => {
-    if (root.dataset.theme === 'light') {
-      root.dataset.theme = 'dark';
-      localStorage.setItem('theme', 'dark');
-    } else {
-      root.dataset.theme = 'light';
-      localStorage.setItem('theme', 'light');
-    }
-  });
+  toggleTheme(); // handle toggle theme button
 };
 
 document.addEventListener('DOMContentLoaded', main);

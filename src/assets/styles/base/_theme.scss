@@ -1,7 +1,6 @@
 @use '../abstracts/colors';
 
 :root {
-  &,
   &[data-theme='light'] {
     --background: #{colors.$sunglow};
     --primary-text: #{colors.$martinique};
