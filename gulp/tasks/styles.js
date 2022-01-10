@@ -9,7 +9,6 @@ import cleanCss from 'gulp-clean-css';
 import autoprefixer from 'autoprefixer';
 import postcssIncludeMedia from 'postcss-include-media';
 import postcssNested from 'postcss-nested';
-import cssnano from 'cssnano';
 import yargs from 'yargs';
 
 const sass = gulpSass(dartSass);

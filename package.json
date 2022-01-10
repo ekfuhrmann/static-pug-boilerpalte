@@ -1,7 +1,7 @@
 {
-  "name": "project-boilerplate",
-  "version": "1.0",
-  "description": "This is a boilerplate starting point for new PUG projects",
+  "name": "static-pug-boilerplate",
+  "version": "1.0.0",
+  "description": "This is a boilerplate starting point for new pug.js projects",
   "author": "Eric Fuhrmann",
   "license": "UNLICENSED",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ekfuhrmann/project-boilerplate"
+    "url": "https://github.com/ekfuhrmann/static-pug-boilerpalte"
   },
   "babel": {
     "presets": [
@@ -36,7 +36,6 @@
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
     "browser-sync": "^2.26.14",
-    "cssnano": "^5.0.15",
     "del": "^6.0.0",
     "dotenv-webpack": "^7.0.2",
     "gulp": "^4.0.2",
