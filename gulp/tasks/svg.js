@@ -3,7 +3,7 @@ import svgmin from 'gulp-svgmin';
 import svgstore from 'gulp-svgstore';
 
 export const svgInline = () => {
-  return src('src/svg/inline/*.svg')
+  return src('src/assets/svg/inline/*.svg')
     .pipe(
       svgmin({
         plugins: [
@@ -23,7 +23,7 @@ export const svgInline = () => {
 };
 
 export const svgStandalone = () => {
-  return src('src/svg/standalone/*.svg')
+  return src('src/assets/svg/standalone/*.svg')
     .pipe(svgmin())
     .pipe(dest(`dist/assets/svg`));
 };

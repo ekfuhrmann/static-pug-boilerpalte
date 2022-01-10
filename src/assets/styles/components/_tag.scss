@@ -2,14 +2,15 @@
 @use '../abstracts/colors';
 
 :root {
-  &[data-theme='dark'] {
-    --tag-background: #{colors.$sunglow};
-    --tag-text: #{colors.$martinique};
-  }
-
+  &,
   &[data-theme='light'] {
     --tag-background: #{colors.$martinique};
     --tag-text: #{colors.$athens-gray};
+  }
+
+  &[data-theme='dark'] {
+    --tag-background: #{colors.$sunglow};
+    --tag-text: #{colors.$martinique};
   }
 }
 
@@ -21,15 +22,15 @@
   box-shadow: 0 0 0 3px var(--background), 0 0 0 5px var(--tag-background);
   transition: box-shadow var(--site-theme-transition),
     background-color var(--site-theme-transition);
+}
 
-  &__label {
-    @include typography.h2($color: var(--tag-text), $line-height: 1);
-    transition: color var(--site-theme-transition);
+.tag__label {
+  @include typography.h2($color: var(--tag-text), $line-height: 1);
+  transition: color var(--site-theme-transition);
 
-    &::before {
-      margin-right: var(--grid-gap);
-      content: '#';
-      font-weight: 800;
-    }
+  &::before {
+    margin-right: var(--grid-gap);
+    content: '#';
+    font-weight: 800;
   }
 }

@@ -1,17 +1,5 @@
 @use '../abstracts/mixins';
-
-:root {
-  --site-max-width: 1440px;
-  --site-menu-height: 50px;
-  --site-theme-transition: 250ms ease-out;
-  --grid-gap: 0.5em; // might swap back to 8px
-  --grid-spacing: clamp(
-    calc(var(--grid-gap) * 3),
-    calc(1rem + 3vw),
-    calc(var(--grid-gap) * 12)
-  );
-  --border-radius: 2px;
-}
+@use '../abstracts/variables';
 
 html {
   min-width: 320px;
@@ -36,9 +24,12 @@ html {
 
 // set default font size
 body {
-  @include mixins.is-flex(center, center, column);
   @include mixins.wrapper;
+  display: flex;
   min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: var(--background);
   color: var(--text-primary);
   font-size: 1.6rem; // 1.6rem = 16px

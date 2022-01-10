@@ -1,6 +1,11 @@
 mixin inline-svg(svgName, className = false)
-  svg(class= className ? `${className} ${svgName}` : svgName)
+  svg(class=className)
     use(xlink:href=`#${svgName}`)
 
-mixin svg(svgName, className = false)
-  object(type='image/svg+xml' data=`/assets/svg/${svgName}.svg` class= className ? `${className} ${svgName}` : svgName)
+mixin svg(svgName, alt, className = false)
+  object(
+    type='image/svg+xml',
+    data=`/assets/svg/${svgName}.svg`,
+    class=className,
+    alt=alt || svgName
+  )

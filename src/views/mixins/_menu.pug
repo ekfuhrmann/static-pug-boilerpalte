@@ -13,17 +13,18 @@ mixin menu-item(content)
     - var activeState = 'active';
 
   li.menu__nav-item(data-state=activeState || false)
-    a.menu__nav-link(href=content.subpages ? '#' : content.url)= content.name
-      if content.subpages
-        ul.menu__nav-submenu(aria-label='submenu')
-          each subpage in content.subpages
-            li.menu__submenu-item
-              a.menu__submenu-link(href=subpage.src)= subpage.name
+    a.menu__nav-link(href=content.url || '#')= content.name
+    if content.subpages
+      ul.menu__subpages(aria-label='submenu')
+        each subpage in content.subpages
+          li.menu__subpage-item
+            a.menu__subpage-link(href=subpage.src)= subpage.name
 
 mixin menu(activePage)
   .menu
-    .menu__left
-      .menu__logo
+    .menu__box
+      a.menu__logo(href='/')
+        +inline-svg('logo')
       nav.menu__nav(aria-label='main menu', role='navigation')
         ul.menu__nav-list
           each page in pages
@@ -31,8 +32,7 @@ mixin menu(activePage)
               var setPage = {
                 name: page.name,
                 url: page.src,
-                active: activePage && activePage.toLowerCase() == page.name.toLowerCase(),
+                active: activePage && (activePage.toLowerCase() == page.name.toLowerCase() || activePage.toLowerCase() == page.name.toLowerCase()),
                 subpages: page.subpages
               }
-
             +menu-item(setPage)

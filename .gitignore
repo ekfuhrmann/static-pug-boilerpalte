@@ -12,3 +12,5 @@ bower
 .DS_Store
 dist
 .env
+# Local Netlify folder
+.netlify

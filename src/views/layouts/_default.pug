@@ -11,18 +11,21 @@ block includes
 block vars
 
 doctype html
-html(dir='ltr', lang='en', data-theme='light')
+html(dir='ltr', lang='en')
   head
     block head
     +head-content(title, description)
 
   body
+    //- script for setting site color theme
+    include ../includes/_set-theme
+
     //- spritesheet for inline svg's
     .svg__spritesheet
       include ../includes/inline.svg
 
     //- menu
-    +menu(page)
+    +menu(subpage ? subpage : page)
 
     //- tag
     +tag(`${page} Page`)
