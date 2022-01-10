@@ -1,0 +1,81 @@
+@use '../abstracts/mixins' as *;
+
+@font-face {
+  font-family: 'playfair display';
+  font-weight: 500;
+  src: url('../../assets/fonts/playfair-display-medium.woff') format('woff'),
+    url('../../assets/fonts/playfair-display-medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'open sans';
+  font-weight: 400;
+  src: url('../../assets/fonts/open-sans-regular.woff') format('woff'),
+    url('../../assets/fonts/open-sans-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'open sans';
+  font-weight: 700;
+  src: url('../../assets/fonts/open-sans-medium.woff') format('woff'),
+    url('../../assets/fonts/open-sans-medium.woff2') format('woff2');
+}
+
+@mixin h1($color: false, $weight: 500, $line-height: false) {
+  @include type(
+    $name: secondary,
+    $size: (
+      2.8rem,
+      3.6rem,
+    ),
+    $weight: $weight,
+    $color: $color,
+    $line-height: $line-height
+  );
+}
+
+@mixin h2($color: false, $weight: 500, $line-height: false) {
+  @include type(
+    $name: secondary,
+    $size: (
+      2.4rem,
+      3rem,
+    ),
+    $weight: $weight,
+    $color: $color,
+    $line-height: $line-height
+  );
+}
+
+@mixin h3($color: false, $weight: 400, $line-height: false) {
+  @include type(
+    $name: primary,
+    $size: (
+      2rem,
+      2.4rem,
+    ),
+    $weight: $weight,
+    $color: $color,
+    $line-height: $line-height
+  );
+}
+
+@mixin h4($color: false, $weight: 400, $line-height: false) {
+  @include type(
+    $name: primary,
+    $size: 2rem,
+    $weight: $weight,
+    $color: $color,
+    $line-height: $line-height
+  );
+}
+
+@mixin body($color: false, $weight: 400, $line-height: false) {
+  @include type(
+    $name: primary,
+    $size: 1.6rem,
+    $weight: $weight,
+    $color: $color,
+    $line-height: $line-height
+  );
+}

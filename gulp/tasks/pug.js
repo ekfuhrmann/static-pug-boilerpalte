@@ -2,6 +2,7 @@ import { src, dest } from 'gulp';
 import gulpif from 'gulp-if';
 import notify from 'gulp-notify';
 import gulpPug from 'gulp-pug';
+import changed from 'gulp-changed';
 import data from 'gulp-data';
 import size from 'gulp-size';
 import yargs from 'yargs';
@@ -18,14 +19,14 @@ const devLocals = {
 };
 
 const prodLocals = {
-  base: '',
+  base: '/',
   extension: '.html',
   productionMode: true,
   deployMode: deploy,
 };
 
 const pug = () => {
-  return src('src/views/**/!(_)*.pug')
+  return src(['src/views/index.pug', 'src/views/pages/**/!(_)*.pug'])
     .pipe(
       // Get relative path to base directory
       data((file) => {
@@ -49,8 +50,9 @@ const pug = () => {
     .on(
       'error',
       notify.onError({
-        title: 'Gulp Pug Error',
+        title: 'Gulp Task Error',
         message: 'Error: <%= error.message %>',
+        sound: false,
       })
     )
     .pipe(
@@ -65,8 +67,9 @@ const pug = () => {
     .on(
       'error',
       notify.onError({
-        title: 'Gulp Pug Error',
+        title: 'Gulp Task Error',
         message: 'Error: <%= error.message %>',
+        sound: false,
       })
     )
     .pipe(size({ showFiles: true }))

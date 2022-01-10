@@ -1,0 +1,56 @@
+{
+  "plugins": ["stylelint-order", "stylelint-scss"],
+  "extends": [
+    "stylelint-config-prettier",
+    "stylelint-config-standard-scss",
+    "stylelint-config-idiomatic-order"
+  ],
+  "rules": {
+    "order/order": ["custom-properties", "declarations"],
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": "mq"
+      }
+    ],
+    "scss/operator-no-newline-after": null,
+    "string-quotes": "single",
+    "selector-id-pattern": null,
+    "selector-class-pattern": null,
+    "declaration-colon-newline-after": null,
+    "indentation": [2, { "ignore": ["inside-parens", "param", "value"] }],
+    "max-line-length": [
+      120,
+      {
+        "ignore": ["non-comments"]
+      }
+    ],
+    "block-opening-brace-space-before": [
+      "always",
+      {
+        "ignoreAtRules": ["if", "else"]
+      }
+    ],
+    "block-closing-brace-newline-after": [
+      "always",
+      {
+        "ignoreAtRules": ["if", "else"]
+      }
+    ],
+    "at-rule-name-space-after": "always",
+    "scss/at-else-closing-brace-newline-after": "always-last-in-chain",
+    "scss/at-else-closing-brace-space-after": "always-intermediate",
+    "scss/at-else-empty-line-before": "never",
+    "scss/at-if-closing-brace-newline-after": "always-last-in-chain",
+    "scss/at-if-closing-brace-space-after": "always-intermediate",
+    "declaration-block-no-redundant-longhand-properties": [
+      true,
+      {
+        "ignoreShorthands": ["/flex/"]
+      }
+    ],
+    "declaration-empty-line-before": "never",
+    "at-rule-empty-line-before": null,
+    "value-list-comma-newline-after": null
+  }
+}

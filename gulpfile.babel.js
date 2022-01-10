@@ -9,16 +9,19 @@ import assets from './gulp/tasks/assets';
 import { svgInline, svgStandalone, svg } from './gulp/tasks/svg';
 import { browserSync, reload } from './gulp/tasks/server';
 
-const tasks = parallel(svg, scripts, styles, pug, images, assets);
+const tasks = parallel(pug, svg, scripts, styles, images, assets);
 
 const watchForChanges = () => {
-  watch('src/svg/inline/**/*', series(svgInline, reload));
-  watch('src/svg/standalone/**/*', series(svgStandalone, reload));
-  watch('src/js/**/*.js', series(scripts, reload));
-  watch('src/scss/**/*.scss', series(styles, reload));
+  watch('src/assets/svg/inline/**/*', series(svgInline, reload));
+  watch('src/assets/svg/standalone/**/*', series(svgStandalone, reload));
+  watch('src/assets/scripts/**/*.js', series(scripts, reload));
+  watch('src/assets/styles/**/*.scss', series(styles, reload));
   watch('src/views/**/*', series(pug, reload));
-  watch('src/images/**/*', series(images, reload));
-  watch('src/assets/**/*', series(assets, reload));
+  watch('src/assets/images/**/*', series(images, reload));
+  watch(
+    'src/assets/!([images, scripts, styles, svg])**/*',
+    series(assets, reload)
+  );
 };
 
 const dev = series(clean, tasks, browserSync, watchForChanges);

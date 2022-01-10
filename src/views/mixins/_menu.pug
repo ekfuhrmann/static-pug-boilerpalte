@@ -1,0 +1,42 @@
+-
+  var pages = [
+    {name: 'Home', src: '/'},
+    {name: 'About', src: '/about'},
+    {name: 'Contact', src: '/contact'},
+    {name: 'Blog', src: '/blog', subpages: [
+      {name: 'Sample Blog Post', src: '/blog/sample-post'}
+    ]},
+  ];
+
+mixin menu-item(content)
+  if content.active
+    - var activeState = 'active';
+
+  li.menu__nav-item(data-state=activeState || false)
+    a.menu__nav-link(href=content.url || '#')= content.name
+    if content.subpages
+      ul.menu__subpages(aria-label='submenu')
+        each subpage in content.subpages
+          li.menu__subpage-item
+            a.menu__subpage-link(href=subpage.src)= subpage.name
+
+mixin menu(activePage)
+  .menu
+    .menu__box
+      a.menu__logo(href='/')
+        +inline-svg('logo')
+      nav.menu__nav(aria-label='main menu', role='navigation')
+        ul.menu__nav-list
+          each page in pages
+            -
+              var setPage = {
+                name: page.name,
+                url: page.src,
+                active: activePage && (activePage.toLowerCase() == page.name.toLowerCase() || activePage.toLowerCase() == page.name.toLowerCase()),
+                subpages: page.subpages
+              }
+            +menu-item(setPage)
+    .menu__box
+      button.menu__theme-toggle
+        +inline-svg('moon', 'menu__theme-toggle-icon --dark')
+        +inline-svg('sun', 'menu__theme-toggle-icon --light')

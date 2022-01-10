@@ -1,0 +1,66 @@
+@use '../abstracts/mixins';
+@use '../abstracts/variables';
+
+html {
+  min-width: 320px;
+  box-sizing: border-box; // default to border-box
+  font-size: 62.5%; // convert 1rem = 10px
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+// box-sizing inherited throughout
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+// no unexpected spacing
+* {
+  padding: 0;
+  margin: 0;
+}
+
+// set default font size
+body {
+  @include mixins.wrapper;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-size: 1.6rem; // 1.6rem = 16px
+  gap: var(--grid-spacing);
+}
+
+// prevents annoying line-height gaps
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+// maintains good responsive constraints for typography
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+blockquote {
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+// hides inline spritesheet generated for SVGs
+.svg__spritesheet {
+  display: none;
+}

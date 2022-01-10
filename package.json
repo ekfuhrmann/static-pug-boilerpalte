@@ -1,16 +1,16 @@
 {
-  "name": "project-boilerplate",
-  "version": "1.0",
-  "description": "This is a boilerplate starting point for new PUG projects",
+  "name": "static-pug-boilerplate",
+  "version": "1.0.0",
+  "description": "This is a boilerplate starting point for new pug.js projects",
   "author": "Eric Fuhrmann",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "gulp",
+    "start": "gulp",
     "build": "gulp build --prod"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ekfuhrmann/project-boilerplate"
+    "url": "https://github.com/ekfuhrmann/static-pug-boilerpalte"
   },
   "babel": {
     "presets": [
@@ -32,6 +32,7 @@
     "@babel/core": "^7.13.15",
     "@babel/preset-env": "^7.13.15",
     "@babel/register": "^7.13.14",
+    "@prettier/plugin-pug": "^1.19.0",
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
     "browser-sync": "^2.26.14",
@@ -46,27 +47,30 @@
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^9.0.0",
-    "gulp-pug": "^4.0.1",
+    "gulp-pug": "^5.0.0",
     "gulp-rename": "^2.0.0",
-    "gulp-sass": "^4.1.0",
+    "gulp-sass": "^5.1.0",
     "gulp-size": "^3.0.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-svgmin": "^3.0.0",
     "gulp-svgstore": "^7.0.1",
     "postcss": "^8.2.10",
-    "prettier": "^2.2.1",
+    "postcss-include-media": "^1.0.1",
+    "postcss-nested": "^5.0.6",
+    "prettier": "^2.5.1",
     "pug-lint": "^2.6.0",
-    "stylelint": "^13.12.0",
+    "sass": "^1.45.2",
+    "stylelint": "^14.2.0",
+    "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-standard": "^21.0.0",
-    "stylelint-order": "^4.1.0",
-    "stylelint-scss": "^3.19.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.1.0",
     "webpack-stream": "^6.1.2",
     "yargs": "^16.2.0"
   },
   "dependencies": {
-    "include-media": "^1.4.9",
     "normalize-scss": "^7.0.1",
-    "rfs": "^9.0.3"
+    "remove": "^0.1.5"
   }
 }

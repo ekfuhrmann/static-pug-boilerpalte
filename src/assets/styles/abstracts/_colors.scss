@@ -1,0 +1,15 @@
+/**
+ * Using Sass colors for the base palette to
+ * have more control over color manipulation
+ * such as alpha / lighten / darken.
+ *
+ * There are functions to leverage hsla with
+ * CSS Variables, but they are pretty dirty
+ * and I rarely need to do anything more than
+ * adjust alpha channels for colors. As such,
+ * it's just easier to use Sass color controls.
+**/
+
+$martinique: hsl(234deg 23% 26%);
+$sunglow: hsl(48deg 95% 58%);
+$athens-gray: hsl(220deg 7% 92%);

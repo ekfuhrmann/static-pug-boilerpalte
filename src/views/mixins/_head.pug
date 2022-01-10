@@ -1,0 +1,14 @@
+mixin head-content(title, description)
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+
+  title= title
+  //- Only add a description if one is defined for the specific page
+  if ( description )
+    meta(name='description', content=description)
+
+  //- Styles
+  link(rel='stylesheet', href='/assets/css/styles.css')
+
+  //- If extra head content is necessary per page
+  block head
