@@ -22,21 +22,20 @@ mixin menu-item(content)
 
 mixin menu(activePage)
   .menu
-    .menu__box
-      a.menu__logo(href='/')
-        +inline-svg('logo')
-      nav.menu__nav(aria-label='main menu', role='navigation')
-        ul.menu__nav-list
-          each page in pages
-            -
-              var setPage = {
-                name: page.name,
-                url: page.src,
-                active: activePage && (activePage.toLowerCase() == page.name.toLowerCase() || activePage.toLowerCase() == page.name.toLowerCase()),
-                subpages: page.subpages
-              }
-            +menu-item(setPage)
-    .menu__box
-      button.menu__theme-toggle
-        +inline-svg('moon', 'menu__theme-toggle-icon --dark')
-        +inline-svg('sun', 'menu__theme-toggle-icon --light')
+    a.menu__logo(href='/')
+      +inline-svg('logo')
+    nav.menu__nav(aria-label='main menu', aria-expanded='false')
+      button.menu__toggle(aria-label='Show Navigation Menu')
+      ul.menu__nav-list
+        each page in pages
+          -
+            var setPage = {
+              name: page.name,
+              url: page.src,
+              active: activePage && (activePage.toLowerCase() == page.name.toLowerCase() || activePage.toLowerCase() == page.name.toLowerCase()),
+              subpages: page.subpages
+            }
+          +menu-item(setPage)
+    button.menu__theme-toggle
+      +inline-svg('moon', 'menu__theme-toggle-icon --dark')
+      +inline-svg('sun', 'menu__theme-toggle-icon --light')

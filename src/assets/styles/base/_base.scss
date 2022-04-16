@@ -25,6 +25,7 @@ html {
 // set default font size
 body {
   @include mixins.wrapper;
+  position: relative;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -34,6 +35,7 @@ body {
   color: var(--text-primary);
   font-size: 1.6rem; // 1.6rem = 16px
   gap: var(--grid-spacing);
+  overflow-x: hidden;
 }
 
 // prevents annoying line-height gaps

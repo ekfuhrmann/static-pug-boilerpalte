@@ -1,7 +1,9 @@
+import toggleNav from './partials/toggleNav';
 import toggleTheme from './partials/toggleTheme';
 
 const main = () => {
-  toggleTheme(); // handle toggle theme button
+  toggleNav(); // handles mobile nav
+  toggleTheme(); // handles theme
 };
 
 document.addEventListener('DOMContentLoaded', main);
