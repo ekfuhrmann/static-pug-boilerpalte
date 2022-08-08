@@ -95,7 +95,7 @@
      * For Example:
      *    $size: (1.6rem, 3.2rem)
      *        - or -
-     *    $size: (166px, 32px)
+     *    $size: (16px, 32px)
     **/
     @if type-of($size) == 'list' and length($size) == 2 {
       // check that units are valid (px/rem)
